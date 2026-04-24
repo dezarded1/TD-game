@@ -1,6 +1,5 @@
 import pygame
 from settings import *
-from ui.button import Button
 from core.states import GameState
 
 class Button:
