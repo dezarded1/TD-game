@@ -4,7 +4,7 @@ import numpy
 import pytmx
 
 SCREEN_WIDTH=1280
-SCREEN_HEIGHT=720
+SCREEN_HEIGHT=960
 FPS=60
 
 # Цвета

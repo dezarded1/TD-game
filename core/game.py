@@ -3,7 +3,7 @@ import sys
 from settings import *
 from core.states import GameState
 from ui.menu import MainMenu
-
+from Level.Dollar import Level
 
 class Game:
     def __init__(self):
@@ -24,6 +24,7 @@ class Game:
             self._update_state()
             self._draw_state()
             self.clock.tick(FPS)
+            self.level=Level()
 
     def _handle_global_events(self, events):
         for event in events:
@@ -50,18 +51,7 @@ class Game:
         if self.current_state == GameState.MENU:
             self.menu.draw(self.screen)
         elif self.current_state == GameState.PLAYING:
-            # Заглушка игрового экрана
-            self.screen.fill(DARK_GRAY)
-
-            # Текст "ИГРА НАЧАЛАСЬ"
-            game_text = FONT_LARGE.render("ИГРА НАЧАЛАСЬ", True, WHITE)
-            text_rect = game_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-            self.screen.blit(game_text, text_rect)
-
-            # Подсказка
-            hint_text = FONT_SMALL.render("Нажми ESC для возврата в меню", True, LIGHT_GRAY)
-            hint_rect = hint_text.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2 + 60))
-            self.screen.blit(hint_text, hint_rect)
+            self.level.draw(self.screen)
 
         pygame.display.flip()
 
