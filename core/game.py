@@ -4,6 +4,7 @@ from settings import *
 from core.states import GameState
 from ui.menu import MainMenu
 from Level.Dollar import Level
+from ui.hud import HUD
 
 class Game:
     def __init__(self):
@@ -25,6 +26,7 @@ class Game:
             self._draw_state()
             self.clock.tick(FPS)
             self.level=Level()
+            self.hud=HUD()
 
     def _handle_global_events(self, events):
         for event in events:
@@ -52,6 +54,7 @@ class Game:
             self.menu.draw(self.screen)
         elif self.current_state == GameState.PLAYING:
             self.level.draw(self.screen)
+            self.hud.draw(self.screen)
 
         pygame.display.flip()
 
