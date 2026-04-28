@@ -91,12 +91,19 @@ class MenuButton:
 
 class Pause:
     def __init__(self, screen_width, screen_height):
-        self.screen_width = screen_width
+        self.screen_width = 600
         self.screen_height = screen_height
+        self.pause_panel = pygame.Surface((self.screen_width, self.screen_height))
+        self.panel_pause_rect = pygame.Rect(340, 0, self.screen_width, self.screen_height)
+        # Заголовок
+        self.title_surface = FONT_TITLE.render("TOWER DEFENSE", True, MENU_TITLE_COLOR)
+        self.title_rect = self.title_surface.get_rect(
+            center=(screen_width // 2, screen_height // 3)
+        )
 
         # Кнопка retry
         button_xretry = screen_width // 2 - BUTTON_WIDTH // 2
-        button_yretry = screen_height // 2+100
+        button_yretry = screen_height // 2+50
 
         self.retry_button = RetryButton(button_xretry, button_yretry,
             BUTTON_WIDTH, BUTTON_HEIGHT,
@@ -104,7 +111,7 @@ class Pause:
         )
         # Кнопка menu
         button_xmenu = screen_width // 2 - BUTTON_WIDTH // 2
-        button_ymenu = screen_height // 2-100
+        button_ymenu = screen_height // 2-50
 
         self.menu_button = MenuButton(
             button_xmenu, button_ymenu,
@@ -124,8 +131,9 @@ class Pause:
             if self.menu_button.handle_event(event):
                 return GameState.MENU
         return None
+
     def draw(self, screen):
-        screen.fill(MENU_BG_COLOR)
-        screen.blit(self.title_surface, self.title_rect)
+        self.pause_panel.fill(MENU_BG_COLOR)
+        screen.blit(self.pause_panel, self.panel_pause_rect)
         self.retry_button.draw(screen)
         self.menu_button.draw(screen)

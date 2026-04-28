@@ -74,6 +74,7 @@ class MainMenu:
         for event in events:
             if self.start_button.handle_event(event):
                 return GameState.PLAYING
+
         return None
 
     def update(self):
