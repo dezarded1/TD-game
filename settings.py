@@ -31,6 +31,7 @@ BUTTON_BORDER_RADIUS = 10
 
 # Шрифты
 pygame.font.init()
+FONT_VERY_SMALL=pygame.font.Font(None, 24)
 FONT_SMALL = pygame.font.Font(None, 36)
 FONT_MEDIUM = pygame.font.Font(None, 48)
 FONT_LARGE = pygame.font.Font(None, 72)

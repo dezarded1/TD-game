@@ -25,8 +25,11 @@ class HUD:
         panel.fill(BLACK)
         screen.blit(panel,self.panel_rect)
 
-        pygame.draw.line(screen,GREEN,(self.hud_width/5,self.hud_height/3),((self.hud_width-20)*(self.health/MAIN_HEALTH),self.hud_height/3),10)
+        pygame.draw.line(screen,GREEN,(64,self.hud_height/5),(((self.hud_width-84)*(self.health/MAIN_HEALTH)+64),self.hud_height/5),10)
 
-        # health_text=FONT_SMALL.render(f"HP")
+
+
+        health_text=FONT_VERY_SMALL.render(f"HP: {self.health}",True,GREEN)
+        screen.blit(health_text,(1,23))
 
 
