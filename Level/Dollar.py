@@ -26,6 +26,30 @@ class Level:
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0],
             [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0]
         ]
+        self.waypoints=[]
+        self.start_position={
+            "x":14,
+            "y":18
+        }
+        self.waypoints = [(self.start_position['x'],self.start_position['y'])]
+        self.end_position = {
+            "x": 3,
+            "y": 0
+        }
+        self.position=self.start_position
+        while self.position!=self.end_position:
+            if self.grid[(self.position['x']-1)][self.position['y']]==1:
+                self.position['x']-=1
+                self.waypoints.append((self.position['x'], self.position['y']))
+            elif self.grid[(self.position['x'])][self.position['y']-1]==1:
+                self.position['y']-=1
+                self.waypoints.append((self.position['x'], self.position['y']))
+
+
+
+
+
+
         self.path_color=YELLOW
         self.ground_colour=GREEN
 
