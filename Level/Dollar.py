@@ -37,13 +37,16 @@ class Level:
             "y": 0
         }
         self.position=self.start_position
-        while self.position!=self.end_position:
-            if self.grid[(self.position['x']-1)][self.position['y']]==1:
-                self.position['x']-=1
-                self.waypoints.append((self.position['x'], self.position['y']))
-            elif self.grid[(self.position['x'])][self.position['y']-1]==1:
-                self.position['y']-=1
-                self.waypoints.append((self.position['x'], self.position['y']))
+        # while self.position!=self.end_position:   
+        #     if self.grid[self.position['x']+1][self.position['y']]==1:
+        #         self.position['x']+=1
+        #     elif self.grid[(self.position['x'])][self.position['y']-1]==1:
+        #         self.position['y']-=1
+        #     elif self.grid[self.position['x']-1][self.position['y']]==1:
+        #         self.position['x']-=1
+                
+        #     self.waypoints.append((self.position['x'], self.position['y']))
+        #     print(self.waypoints)
 
 
 
