@@ -42,7 +42,7 @@ class Level:
             "y": None
         }
 
-        # self.waypoints=self.calculate_path()
+        self.waypoints=self.calculate_path()
 
 
 
@@ -52,36 +52,37 @@ class Level:
 
 
     def is_within_bounds(self,y,x):
-        return 0 <= y < self.grid_size['y'] and 0 <= x < self.grid_size['x'] and x != self.visited['x'] and y != self.visited['y']
+        return 0 <= y < self.grid_size['y'] and 0 <= x < self.grid_size['x'] and (x != self.visited['x'] or y != self.visited['y'])
 
 
-    # def calculate_path(self):
-        # waypoints=[(self.start_position['y'],self.start_position['x'])]
-        #
-        # while self.position!=self.end_position:
-        #     if self.is_within_bounds(self.position['y']+1,self.position['x'])  and self.grid[self.position['y']+1][self.position['x']]==1:
-        #         self.visited=self.position.copy()
-        #         self.position['y']+=1
-        #
-        #     elif self.is_within_bounds(self.position['y'],self.position['x']-1)  and self.grid[self.position['y']][self.position['x']-1]==1:
-        #         self.visited = self.position.copy()
-        #         self.position['x']-=1
-        #     elif self.is_within_bounds(self.position['y']-1,self.position['x'])  and self.grid[self.position['y']-1][self.position['x']]==1:
-        #         self.visited = self.position.copy()
-        #         self.position['y']-=1
-        #
-        #
-        #     waypoints.append((self.position['y'], self.position['x']))
-        #     print(waypoints)
-        #
-        # return waypoints
+    def calculate_path(self):
+        waypoints=[(self.start_position['y'],self.start_position['x'])]
+        
+        while self.position!=self.end_position:
+            if self.is_within_bounds(self.position['y']+1,self.position['x'])  and self.grid[self.position['y']+1][self.position['x']]==1:
+                self.visited=self.position.copy()
+                self.position['y']+=1
+        
+            elif self.is_within_bounds(self.position['y'],self.position['x']-1)  and self.grid[self.position['y']][self.position['x']-1]==1:
+                self.visited = self.position.copy()
+                self.position['x']-=1
+
+            elif self.is_within_bounds(self.position['y']-1,self.position['x'])  and self.grid[self.position['y']-1][self.position['x']]==1:
+                self.visited = self.position.copy()
+                self.position['y']-=1
+        
+        
+            waypoints.append((self.position['y'], self.position['x']))
+            print(waypoints)
+        
+        return waypoints
 
 
 
 
     def draw(self,screen):
-        for row in range(self.grid_size['row']):
-            for col in range(self.grid_size['col']):
+        for row in range(self.grid_size['y']):
+            for col in range(self.grid_size['x']):
                 x= col*self.cell_size
                 y=row*self.cell_size
 
