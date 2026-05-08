@@ -14,7 +14,10 @@ class Game:
         pygame.display.set_caption("Tower Defense")
         self.clock = pygame.time.Clock()
         self.running = True
+
         self.level=Level()
+        self.hud = HUD()
+
         self.current_state = GameState.MENU
         self.menu = MainMenu(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.pause = Pause(SCREEN_WIDTH, SCREEN_HEIGHT)
@@ -27,7 +30,7 @@ class Game:
             self._update_state()
             self._draw_state()
             self.clock.tick(FPS)
-            self.hud=HUD()
+
 
     def _handle_global_events(self, events):
         for event in events:

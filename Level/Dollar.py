@@ -1,9 +1,11 @@
 import pygame
 from settings import *
-
+from enemies.Dollar_green import Dollar_green
 
 class Level:
     def __init__(self):
+
+
         self.grid_size={
             "x": 20,
             "y": 15
@@ -44,7 +46,7 @@ class Level:
 
         self.waypoints=self.calculate_path()
         
-
+        self.enemies=[]
 
 
 
@@ -80,7 +82,8 @@ class Level:
         return waypoints
 
 
-
+    def update(self):
+        self.new_enemy=Dollar_green(self.waypoints)
 
     def draw(self,screen):
         for row in range(self.grid_size['y']):

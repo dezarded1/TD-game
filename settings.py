@@ -36,6 +36,7 @@ FONT_SMALL = pygame.font.Font(None, 36)
 FONT_MEDIUM = pygame.font.Font(None, 48)
 FONT_LARGE = pygame.font.Font(None, 72)
 FONT_TITLE = pygame.font.Font(None, 100)
+
 #constanti
 MAIN_HEALTH=100
 BULET_TOWER_DAMAGE=5
