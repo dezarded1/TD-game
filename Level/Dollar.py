@@ -49,7 +49,6 @@ class Level:
         self.enemies=[]
 
 
-
         self.path_color=YELLOW
         self.ground_colour=GREEN
 
@@ -76,7 +75,7 @@ class Level:
                 self.position['y']-=1
         
         
-            waypoints.append((self.position['y'], self.position['x']))
+            waypoints.append((self.position['y']*self.cell_size+self.cell_size//2, self.position['x']*self.cell_size+self.cell_size//2))
             
         
         return waypoints
