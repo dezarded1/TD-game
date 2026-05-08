@@ -39,7 +39,7 @@ class Game:
                     if self.current_state == GameState.PAUSE:
                         self.running = False
                     else:
-                        self.current_state = GameState.PAUSE
+                        self.current_state = GameState.MENU
 
     def _handle_state_events(self, events):
         if self.current_state == GameState.MENU:
