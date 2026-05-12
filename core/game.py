@@ -61,6 +61,7 @@ class Game:
         if self.current_state == GameState.MENU:
             self.menu.draw(self.screen)
         elif self.current_state == GameState.PLAYING:
+            self.level.update()
             self.level.draw(self.screen)
             self.hud.draw(self.screen)
         elif self.current_state == GameState.PAUSE:
