@@ -37,7 +37,6 @@ class Level:
             "x":18,
             "y":14
         }
-        self.waypoints = []
         self.end_position = {
             "x": 0,
             "y": 3
@@ -50,7 +49,11 @@ class Level:
 
         self.waypoints=self.calculate_path()
 
+        self.waypoints[0]=(self.start_position['y']*self.cell_size+self.cell_size//2,self.start_position['x']*self.cell_size+self.cell_size//2)
+
         self.enemies=[]
+        self.spawn_rate_timer=0
+        self.new_enemy = Dollar_green(self.waypoints)
 
 
         self.path_color=YELLOW
@@ -86,13 +89,25 @@ class Level:
 
 
     def update(self):
-        self.new_enemy=Dollar_green(self.waypoints)
+
+        self.spawn_rate_timer+=1
+        if self.spawn_rate_timer>=120:
+
+            self.spawn_rate_timer=0
+            self.enemies.append(self.new_enemy)
+
+        for enemy in self.enemies[:]:
+            enemy.update()
+            if enemy.reached_base or not enemy.alive:
+                self.enemies.remove(enemy)
+
+
 
     def draw(self,screen):
         for row in range(self.grid_size['y']):
             for col in range(self.grid_size['x']):
-                x= col*self.cell_size
-                y=row*self.cell_size
+                x = col*self.cell_size
+                y = row*self.cell_size
 
                 if self.grid[row][col]==1:
                     color=self.path_color
@@ -103,3 +118,10 @@ class Level:
                 pygame.draw.rect(screen,color,cell_rect)
 
                 pygame.draw.rect(screen,DARK_GRAY,cell_rect,width=1)
+
+                pygame.draw.rect(screen,DARK_GRAY,cell_rect,width=1)
+
+        for enemy in self.enemies:
+
+            enemy.draw(screen)
+
