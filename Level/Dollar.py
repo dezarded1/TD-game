@@ -1,9 +1,13 @@
 import pygame
+import math
 from settings import *
 from enemies.Dollar_green import Dollar_green
+from towers.tower import Tower
 
 class Level:
     def __init__(self):
+        self.towers = []
+        self.projectiles = []
 
 
         self.grid_size={
@@ -45,7 +49,7 @@ class Level:
         }
 
         self.waypoints=self.calculate_path()
-        
+
         self.enemies=[]
 
 
@@ -60,12 +64,12 @@ class Level:
 
     def calculate_path(self):
         waypoints=[(self.start_position['y'],self.start_position['x'])]
-        
+
         while self.position!=self.end_position:
             if self.is_visited(self.position['y']+1,self.position['x']) and self.is_within_bounds(self.position['y']+1,self.position['x'])  and self.grid[self.position['y']+1][self.position['x']]==1:
                 self.visited=self.position.copy()
                 self.position['y']+=1
-        
+
             elif self.is_visited(self.position['y'],self.position['x']-1) and self.is_within_bounds(self.position['y'],self.position['x']-1)  and self.grid[self.position['y']][self.position['x']-1]==1:
                 self.visited = self.position.copy()
                 self.position['x']-=1
@@ -73,11 +77,11 @@ class Level:
             elif self.is_visited(self.position['y']-1,self.position['x']) and self.is_within_bounds(self.position['y']-1,self.position['x'])  and self.grid[self.position['y']-1][self.position['x']]==1:
                 self.visited = self.position.copy()
                 self.position['y']-=1
-        
-        
+
+
             waypoints.append((self.position['y']*self.cell_size+self.cell_size//2, self.position['x']*self.cell_size+self.cell_size//2))
-            
-        
+
+
         return waypoints
 
 
@@ -99,5 +103,3 @@ class Level:
                 pygame.draw.rect(screen,color,cell_rect)
 
                 pygame.draw.rect(screen,DARK_GRAY,cell_rect,width=1)
-
-

@@ -6,7 +6,7 @@ from settings import *
 
 class HUD:
     def __init__(self):
-        self.money=5
+        self.money=5000
         self.health=MAIN_HEALTH
         self.wave=5
         self.hud_width=450
