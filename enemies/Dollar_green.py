@@ -11,10 +11,10 @@ class Dollar_green():
         self.speed=ENEMY_SPEED
         self.damage=ENEMY_DAMAGE
 
-        self.waypoints=waypoints
+        self.waypoints=waypoints.copy()
         #Позиция
-        self.y=waypoints[0][0]
-        self.x=waypoints[0][1]
+        self.y=self.waypoints[0][0]
+        self.x=self.waypoints[0][1]
 
         #Состояние
         self.alive=True
@@ -24,31 +24,33 @@ class Dollar_green():
 
         self.target_index=1
 
-        self.target_index_max=len(waypoints)
+        self.target_index_max=len(self.waypoints)
 
 
     def update(self):
+        #Дошли ли мы до базы
         if self.target_index>= self.target_index_max:
             self.alive=False
             self.reached_base=True
             return
 
-        target_x=self.waypoints[self.target_index][1]
-        target_y=self.waypoints[self.target_index][0]
+
+        self.target_x=self.waypoints[self.target_index][1]
+        self.target_y=self.waypoints[self.target_index][0]
 
         #Расстояние
-        dx = target_x-self.x
-        dy = target_y-self.y
-        distance= (dx**2+dy**2)**0.5
+        self.dx = self.target_x-self.x
+        self.dy = self.target_y-self.y
+        self.distance= (self.dx**2+self.dy**2)**0.5
 
-
-        if distance <= self.speed:
-            self.x = target_x
-            self.y = target_y
+        #Расчёт дистанции(если растояние маленькое телепортируемся)
+        if self.distance <= self.speed:
+            self.x = self.target_x
+            self.y = self.target_y
             self.target_index+=1
         else:
-            self.x+=(dx/distance)*self.speed
-            self.y+=(dy/distance)*self.speed
+            self.x+=(self.dx/self.distance)*self.speed
+            self.y+=(self.dy/self.distance)*self.speed
 
 
 
@@ -61,9 +63,8 @@ class Dollar_green():
 
     def draw(self,screen):
 
-        money_font=FONT_MEDIUM
-        text_surface= money_font.render("$",True,BLACK)
-        text_rect=text_surface.get_rect(center=(self.x,self.y))
-        print(self.x,self.y)
-        screen.blit(text_surface,text_rect)
+        self.money_font=FONT_MEDIUM
+        self.text_surface= self.money_font.render("$",True,BLACK)
+        self.text_rect=self.text_surface.get_rect(center=(self.x,self.y))
+        screen.blit(self.text_surface,self.text_rect)
 

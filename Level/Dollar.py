@@ -53,11 +53,12 @@ class Level:
 
         self.enemies=[]
         self.spawn_rate_timer=0
-        self.new_enemy = Dollar_green(self.waypoints)
+        
 
 
         self.path_color=YELLOW
         self.ground_colour=GREEN
+
 
     def is_visited(self,y,x):
         return (x != self.visited['x'] or y != self.visited['y'])
@@ -89,21 +90,27 @@ class Level:
 
 
     def update(self):
-
+        self.new_enemy = Dollar_green(self.waypoints)
         self.spawn_rate_timer+=1
-        if self.spawn_rate_timer>=120:
+        
+        if self.spawn_rate_timer>=240:
 
             self.spawn_rate_timer=0
             self.enemies.append(self.new_enemy)
+            
+           
 
         for enemy in self.enemies[:]:
             enemy.update()
+
             if enemy.reached_base or not enemy.alive:
                 self.enemies.remove(enemy)
 
 
 
     def draw(self,screen):
+
+        #Отрисовка фона
         for row in range(self.grid_size['y']):
             for col in range(self.grid_size['x']):
                 x = col*self.cell_size
@@ -121,7 +128,10 @@ class Level:
 
                 pygame.draw.rect(screen,DARK_GRAY,cell_rect,width=1)
 
+        
         for enemy in self.enemies:
-
             enemy.draw(screen)
+
+        
+            
 
