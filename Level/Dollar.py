@@ -3,13 +3,14 @@ import math
 from settings import *
 from enemies.Dollar_green import Dollar_green
 from towers.tower import Tower
-from towers.tower import Tower
+from ui.hud import HUD
 
 
 class Level:
     def __init__(self):
         self.towers = []
         self.projectiles = []
+        self.hud=HUD()
 
         self.grid_size = {
             "x": 20,
@@ -128,7 +129,7 @@ class Level:
                 if projectile["target"].health <= 0:
                     projectile["target"].alive = False
                     # Начисление денег за убийство
-                    self.money += KILL_INKREAS
+                    self.hud.money += KILL_INKREAS
                 self.projectiles.remove(projectile)
             else:
                 projectile["x"] += (dx / distance) * projectile["speed"]

@@ -72,14 +72,16 @@ class Tower:
             dx = self.target.x - self.x
             dy = self.target.y - self.y
             self.angle = math.atan2(dy, dx)
-
+            if self.name == "Заморозка":
+                self.target.slow_effect = True
+                self.target.slow_duration = 60
             projectile = {
                 "x": self.x,
                 "y": self.y,
                 "target": self.target,
                 "damage": self.damage,
                 "speed": BULLET_SPEED,
-                "color": YELLOW if self.name != "Лазер" else BLUE
+                "color": RED if self.name != "Лазер" else BLUE
             }
             projectiles.append(projectile)
 

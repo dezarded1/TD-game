@@ -34,33 +34,33 @@ class TowerShop:
                 "name": "Пулемёт",
                 "color": GRAY,
                 "cost": 10,
-                "damage": 5,
+                "damage": 1,
                 "range": 150,
-                "fire_rate": 10
+                "fire_rate": 20
             },
             {
                 "name": "Пушка",
                 "color": RED,
                 "cost": 25,
-                "damage": 20,
+                "damage": 30,
                 "range": 200,
-                "fire_rate": 30
+                "fire_rate": 150
             },
             {
                 "name": "Лазер",
                 "color": BLUE,
                 "cost": 50,
-                "damage": 40,
+                "damage": 75,
                 "range": 250,
-                "fire_rate": 15
+                "fire_rate": 300
             },
             {
                 "name": "Заморозка",
                 "color": (100, 200, 255),
                 "cost": 35,
-                "damage": 8,
+                "damage": 15,
                 "range": 180,
-                "fire_rate": 20
+                "fire_rate": 600
             }
         ]
 
