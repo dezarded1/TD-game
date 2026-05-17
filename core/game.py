@@ -47,6 +47,8 @@ class Game:
         if self.current_state == GameState.MENU:
             new_state = self.menu.handle_events(events)
             if new_state:
+                if new_state == GameState.PLAYING:
+                    self.reset_game()
                 self.current_state = new_state
         if self.current_state == GameState.PAUSE:
             new_state = self.pause.handle_events(events)
@@ -98,6 +100,15 @@ class Game:
         if self.current_state == GameState.PLAYING:
             self.level.update()
             self.hud.money = self.level.money if hasattr(self.level, 'money') else self.hud.money
+
+    def reset_game(self):
+        self.tower_shop = TowerShop(SCREEN_WIDTH - 320, 20)
+        self.level = Level()
+        self.hud = HUD()
+
+
+        if hasattr(self, 'placing_tower'):
+            self.placing_tower = None
 
     def _draw_state(self):
         if self.current_state == GameState.MENU:
