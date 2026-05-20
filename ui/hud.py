@@ -6,18 +6,18 @@ from settings import *
 
 class HUD:
     def __init__(self):
-        self.money=5000
-        self.health=MAIN_HEALTH
-        self.wave=5
+        self.money=0
+        self.health=0
         self.hud_width=450
         self.hud_height=128
 
         self.panel_rect=pygame.Rect(0,0,self.hud_width,self.hud_height)
 
-    def update(self):
-        self.money=5
-        self.health=MAIN_HEALTH
-        self.wave=5
+    def update_health(self,health):
+        self.health=health
+    
+    def update_money(self,money):
+        self.money=money
     
     def draw(self,screen):
         panel=pygame.Surface((self.hud_width,self.hud_height))

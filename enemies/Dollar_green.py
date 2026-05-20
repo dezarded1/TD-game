@@ -26,6 +26,8 @@ class Dollar_green():
 
         self.target_index_max=len(self.waypoints)
 
+        
+
 
     def update(self):
         #Дошли ли мы до базы

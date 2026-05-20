@@ -60,6 +60,11 @@ class Level:
         self.path_color = YELLOW
         self.ground_colour = GREEN
 
+        self.base_heath=MAIN_HEALTH
+        self.base_money=30
+        
+        
+
     def is_visited(self, y, x):
         return (x != self.visited['x'] or y != self.visited['y'])
 
@@ -136,18 +141,27 @@ class Level:
                 projectile["y"] += (dy / distance) * projectile["speed"]
 
     def update(self):
+        #Добавление врагов
         self.new_enemy = Dollar_green(self.waypoints)
         self.spawn_rate_timer += 1
 
-        if self.spawn_rate_timer >= 240:
+        if self.spawn_rate_timer >= 210:
             self.spawn_rate_timer = 0
             self.enemies.append(self.new_enemy)
 
+        #Обновление врагов
         for enemy in self.enemies[:]:
             enemy.update()
 
             if enemy.reached_base or not enemy.alive:
+                if enemy.reached_base:
+                    self.base_heath-=ENEMY_DAMAGE
+                elif not enemy.alive:
+                    self.base_money+=KILL_INKREAS
+                   
                 self.enemies.remove(enemy)
+        
+
         for tower in self.towers:
             tower.update(self.enemies, self.projectiles)
 

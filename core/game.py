@@ -90,7 +90,10 @@ class Game:
                                 0 <= grid_y < self.level.grid_size["y"]):
 
                             if self.level.place_tower(grid_x, grid_y, self.placing_tower):
-                                self.hud.money -= self.placing_tower["cost"]
+                                self.level.base_money-=self.placing_tower["cost"]
+                                
+
+                                
 
                         self.placing_tower = None
 
@@ -115,6 +118,8 @@ class Game:
             self.menu.draw(self.screen)
         elif self.current_state == GameState.PLAYING:
             self.level.update()
+            self.hud.update_health(self.level.base_heath)
+            self.hud.update_money(self.level.base_money)
             self.level.draw(self.screen)
             self.hud.draw(self.screen)
         elif self.current_state == GameState.PAUSE:
