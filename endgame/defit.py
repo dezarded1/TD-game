@@ -72,7 +72,7 @@ class Defit:
     def handle_events(self, events):
         for event in events:
             if self.start_button.handle_event(event):
-                return GameState.PLAYING
+                return GameState.MENU
 
         return None
 
@@ -85,7 +85,7 @@ class Defit:
         # Обновляем цвет заголовка
         color_value = self.pulse_alpha
         pulsed_color = (255, 255, color_value // 2)
-        self.title_surface = FONT_TITLE.render("TOWER DEFENSE", True, pulsed_color)
+        self.title_surface = FONT_TITLE.render("ПОРАЖЕНИЕ", True, pulsed_color)
 
     def draw(self, screen):
         screen.fill(MENU_BG_COLOR)

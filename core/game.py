@@ -7,6 +7,8 @@ from Level.Dollar import Level
 from ui.hud import HUD
 from ui.pause import Pause
 from ui.tower_shop import TowerShop
+from endgame.defit import Defit
+from endgame.win import Win
 class Game:
     def __init__(self):
         pygame.init()
@@ -21,6 +23,8 @@ class Game:
         self.current_state = GameState.MENU
         self.menu = MainMenu(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.pause = Pause(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.defeat=Defit(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.victory = Win(SCREEN_WIDTH, SCREEN_HEIGHT)
 
     def run(self):
         while self.running:
@@ -38,7 +42,7 @@ class Game:
                 self.running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    if self.current_state == GameState.MENU:
+                    if self.current_state == GameState.MENU and self.current_state == GameState.DEFEAT:
                         self.running = False
                     else:
                         self.current_state = GameState.PAUSE
@@ -56,6 +60,10 @@ class Game:
                 self.current_state = new_state
         if self.current_state == GameState.PLAYING:
             self._handle_playing_events(events)
+        if self.current_state == GameState.DEFEAT:
+            new_state = self.pause.handle_events(events)
+            if new_state:
+                self.current_state = new_state
 
     def _handle_playing_events(self, events):
         """Обработка событий в игре"""
@@ -100,8 +108,10 @@ class Game:
     def _update_state(self):
         if self.current_state == GameState.MENU:
             self.menu.update()
-        if self.current_state == GameState.PLAYING:
-            self.level.update()
+        elif self.current_state == GameState.PLAYING:
+            result = self.level.update()
+            if result == "defeat":
+                self.current_state = GameState.DEFEAT
             self.hud.money = self.level.money if hasattr(self.level, 'money') else self.hud.money
 
     def reset_game(self):
@@ -128,6 +138,10 @@ class Game:
             self.level.draw(self.screen)
             self.hud.draw(self.screen)
             self.tower_shop.draw(self.screen)
+        elif self.current_state == GameState.DEFEAT:
+            self.defeat.draw(self.screen)
+
+
 
         pygame.display.flip()
 

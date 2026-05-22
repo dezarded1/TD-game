@@ -161,7 +161,7 @@ class Level:
                     self.base_heath=0
                     return "defeat"
 
-                elif not enemy.alive:
+                elif not enemy.alive and not enemy.reached_base :
                     self.base_money+=KILL_INKREAS
                    
                 self.enemies.remove(enemy)
