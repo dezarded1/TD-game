@@ -42,10 +42,14 @@ class Game:
                 self.running = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
-                    if self.current_state == GameState.MENU and self.current_state == GameState.DEFEAT:
+                    if self.current_state == GameState.MENU:
                         self.running = False
-                    else:
+                    elif self.current_state == GameState.PLAYING:
                         self.current_state = GameState.PAUSE
+                    elif self.current_state == GameState.PAUSE:
+                        self.current_state = GameState.PLAYING
+                    else :
+                        self.current_state= GameState.MENU
 
     def _handle_state_events(self, events):
         if self.current_state == GameState.MENU:
