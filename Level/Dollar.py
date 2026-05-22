@@ -62,6 +62,8 @@ class Level:
 
         self.base_heath=MAIN_HEALTH
         self.base_money=30
+
+        self.game_timer=300*FPS
         
         
 
@@ -141,6 +143,12 @@ class Level:
                 projectile["y"] += (dy / distance) * projectile["speed"]
 
     def update(self):
+        self.game_timer -= 1
+
+        if self.game_timer<=0:
+            return "Victory"
+
+
         #Добавление врагов
         self.new_enemy = Dollar_green(self.waypoints)
         self.spawn_rate_timer += 1
