@@ -145,7 +145,7 @@ class Level:
         self.new_enemy = Dollar_green(self.waypoints)
         self.spawn_rate_timer += 1
 
-        if self.spawn_rate_timer >= 210:
+        if self.spawn_rate_timer >= ENEMY_SPAWN_RATE:
             self.spawn_rate_timer = 0
             self.enemies.append(self.new_enemy)
 
@@ -156,10 +156,16 @@ class Level:
             if enemy.reached_base or not enemy.alive:
                 if enemy.reached_base:
                     self.base_heath-=ENEMY_DAMAGE
+
+                if self.base_heath<=0:
+                    self.base_heath=0
+                    return "defeat"
+
                 elif not enemy.alive:
                     self.base_money+=KILL_INKREAS
                    
                 self.enemies.remove(enemy)
+
         
 
         for tower in self.towers:
