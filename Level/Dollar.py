@@ -61,7 +61,7 @@ class Level:
         self.ground_colour = GREEN
 
         self.base_heath=MAIN_HEALTH
-        self.base_money=30
+        self.base_money=300
 
         self.game_timer=WIN_TIME*FPS
         
@@ -134,11 +134,7 @@ class Level:
 
             if distance < projectile["speed"]:
                 # Попадание
-                projectile["target"].health -= projectile["damage"]
-                if projectile["target"].health <= 0:
-                    projectile["target"].alive = False
-                    # Начисление денег за убийство
-                    self.hud.money += KILL_INKREAS
+                projectile["target"].take_damage(projectile["damage"]) 
                 self.projectiles.remove(projectile)
             else:
                 projectile["x"] += (dx / distance) * projectile["speed"]

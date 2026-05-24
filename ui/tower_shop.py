@@ -58,9 +58,9 @@ class TowerShop:
                 "name": "Заморозка",
                 "color": (100, 200, 255),
                 "cost": 35,
-                "damage": 15,
+                "damage": 25,
                 "range": 180,
-                "fire_rate": 600
+                "fire_rate": 240
             }
         ]
 

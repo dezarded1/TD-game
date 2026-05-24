@@ -74,7 +74,7 @@ class Tower:
             self.angle = math.atan2(dy, dx)
             if self.name == "Заморозка":
                 self.target.slow_effect = True
-                self.target.slow_duration = 60
+                self.target.slow_duration = FPS*2
             projectile = {
                 "x": self.x,
                 "y": self.y,
