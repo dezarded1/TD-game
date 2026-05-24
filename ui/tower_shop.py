@@ -36,7 +36,7 @@ class TowerShop:
                 "cost": 10,
                 "damage": 1,
                 "range": 150,
-                "fire_rate": 20
+                "fire_rate": 10
             },
             {
                 "name": "Пушка",

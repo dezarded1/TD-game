@@ -61,7 +61,7 @@ class Level:
         self.ground_colour = GREEN
 
         self.base_heath=MAIN_HEALTH
-        self.base_money=300
+        self.base_money=30
 
         self.game_timer=WIN_TIME*FPS
         
