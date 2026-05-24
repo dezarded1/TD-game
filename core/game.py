@@ -24,7 +24,7 @@ class Game:
         self.menu = MainMenu(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.pause = Pause(SCREEN_WIDTH, SCREEN_HEIGHT)
         self.defeat=Defit(SCREEN_WIDTH, SCREEN_HEIGHT)
-        self.victory = Win(SCREEN_WIDTH, SCREEN_HEIGHT)
+        self.win = Win(SCREEN_WIDTH, SCREEN_HEIGHT)
 
     def run(self):
         while self.running:
@@ -66,6 +66,10 @@ class Game:
             self._handle_playing_events(events)
         if self.current_state == GameState.DEFEAT:
             new_state = self.defeat.handle_events(events)
+            if new_state:
+                self.current_state = new_state
+        if self.current_state == GameState.WIN:
+            new_state = self.win.handle_events(events)
             if new_state:
                 self.current_state = new_state
 
@@ -116,6 +120,9 @@ class Game:
             result = self.level.update()
             if result == "defeat":
                 self.current_state = GameState.DEFEAT
+            elif result == "win":
+                self.current_state = GameState.WIN
+            
             self.hud.money = self.level.money if hasattr(self.level, 'money') else self.hud.money
 
     def reset_game(self):
@@ -144,6 +151,8 @@ class Game:
             self.tower_shop.draw(self.screen)
         elif self.current_state == GameState.DEFEAT:
             self.defeat.draw(self.screen)
+        elif self.current_state == GameState.WIN:
+            self.win.draw(self.screen)
 
 
 

@@ -1,7 +1,7 @@
 import pygame
 from settings import *
 from core.states import GameState
-class Button:
+class Button1:
     def __init__(self, x, y, width, height, text, font=None,
                  normal_color=BUTTON_NORMAL_COLOR,
                  hover_color=BUTTON_HOVER_COLOR,
@@ -50,7 +50,7 @@ class Win:
         self.screen_height = screen_height
 
         # Заголовок
-        self.title_surface = FONT_TITLE.render("ПОБЕДА", True, MENU_TITLE_COLOR)
+        self.title_surface = FONT_TITLE.render("ПОБЕДА!", True, MENU_TITLE_COLOR)
         self.title_rect = self.title_surface.get_rect(
             center=(screen_width // 2, screen_height // 3)
         )
@@ -59,10 +59,10 @@ class Win:
         button_x = screen_width // 2 - BUTTON_WIDTH // 2
         button_y = screen_height // 2
 
-        self.start_button = Button(
+        self.win_button = Button1(
             button_x, button_y,
             BUTTON_WIDTH, BUTTON_HEIGHT,
-            "ЗАНОВО"
+            "В главное меню"
         )
 
         # Простая анимация
@@ -71,8 +71,8 @@ class Win:
 
     def handle_events(self, events):
         for event in events:
-            if self.start_button.handle_event(event):
-                return GameState.PLAYING
+            if self.win_button.handle_event(event):
+                return GameState.MENU
 
         return None
 
@@ -90,4 +90,4 @@ class Win:
     def draw(self, screen):
         screen.fill(MENU_BG_COLOR)
         screen.blit(self.title_surface, self.title_rect)
-        self.start_button.draw(screen)
+        self.win_button.draw(screen)

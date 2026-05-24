@@ -50,7 +50,7 @@ class Defit:
         self.screen_height = screen_height
 
         # Заголовок
-        self.title_surface = FONT_TITLE.render("ПОРАЖЕНИЕ", True, MENU_TITLE_COLOR)
+        self.title_surface = FONT_TITLE.render("ПОРАЖЕНИЕ", True, WHITE)
         self.title_rect = self.title_surface.get_rect(
             center=(screen_width // 2, screen_height // 3)
         )
@@ -62,7 +62,7 @@ class Defit:
         self.repit_button = Button_repit(
             button_x, button_y,
             BUTTON_WIDTH, BUTTON_HEIGHT,
-            "заново"
+            "В главное меню"
         )
 
         # Простая анимация

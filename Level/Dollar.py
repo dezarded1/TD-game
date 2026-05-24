@@ -146,7 +146,7 @@ class Level:
         self.game_timer -= 1
 
         if self.game_timer<=0:
-            return "Victory"
+            return "win"
 
 
         #Добавление врагов

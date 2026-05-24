@@ -5,4 +5,4 @@ class GameState(Enum):
     PLAYING = auto()
     PAUSE=auto()
     DEFEAT=auto()
-    VICTORY=auto()
+    WIN=auto()
