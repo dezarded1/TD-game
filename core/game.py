@@ -118,6 +118,9 @@ class Game:
             self.menu.update()
         elif self.current_state == GameState.PLAYING:
             result = self.level.update()
+            self.hud.update_health(self.level.base_heath)
+            self.hud.update_money(self.level.base_money)
+            self.hud.update_time(self.level.game_timer//FPS)
             if result == "defeat":
                 self.current_state = GameState.DEFEAT
             elif result == "win":
@@ -138,9 +141,6 @@ class Game:
         if self.current_state == GameState.MENU:
             self.menu.draw(self.screen)
         elif self.current_state == GameState.PLAYING:
-            self.level.update()
-            self.hud.update_health(self.level.base_heath)
-            self.hud.update_money(self.level.base_money)
             self.level.draw(self.screen)
             self.hud.draw(self.screen)
         elif self.current_state == GameState.PAUSE:

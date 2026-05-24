@@ -66,6 +66,8 @@ class Level:
         self.game_timer=WIN_TIME*FPS
         
         
+        
+        
 
     def is_visited(self, y, x):
         return (x != self.visited['x'] or y != self.visited['y'])
@@ -143,6 +145,7 @@ class Level:
                 projectile["y"] += (dy / distance) * projectile["speed"]
 
     def update(self):
+        #время
         self.game_timer -= 1
 
         if self.game_timer<=0:
@@ -152,8 +155,7 @@ class Level:
         #Добавление врагов
         self.new_enemy = Dollar_green(self.waypoints)
         self.spawn_rate_timer += 1
-
-        if self.spawn_rate_timer >= ENEMY_SPAWN_RATE:
+        if self.spawn_rate_timer >= (ENEMY_SPAWN_RATE-(DIFFICULTY_LEVEL_SPAWN_RATE*(1-((self.game_timer//FPS)/WIN_TIME)))):
             self.spawn_rate_timer = 0
             self.enemies.append(self.new_enemy)
 
