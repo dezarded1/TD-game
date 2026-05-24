@@ -65,7 +65,7 @@ class Game:
         if self.current_state == GameState.PLAYING:
             self._handle_playing_events(events)
         if self.current_state == GameState.DEFEAT:
-            new_state = self.pause.handle_events(events)
+            new_state = self.defeat.handle_events(events)
             if new_state:
                 self.current_state = new_state
 
