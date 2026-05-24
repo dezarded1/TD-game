@@ -63,7 +63,7 @@ class Level:
         self.base_heath=MAIN_HEALTH
         self.base_money=30
 
-        self.game_timer=300*FPS
+        self.game_timer=WIN_TIME*FPS
         
         
 
