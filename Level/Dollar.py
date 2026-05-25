@@ -151,7 +151,8 @@ class Level:
         #Добавление врагов
         self.new_enemy = Dollar_green(self.waypoints)
         self.spawn_rate_timer += 1
-        if self.spawn_rate_timer >= (ENEMY_SPAWN_RATE-(DIFFICULTY_LEVEL_SPAWN_RATE*(1-((self.game_timer//FPS)/WIN_TIME)))):
+
+        if self.game_timer>50*FPS and self.spawn_rate_timer >= (ENEMY_SPAWN_RATE-(DIFFICULTY_LEVEL_SPAWN_RATE*(1-(((self.game_timer//FPS)-50)/(WIN_TIME-50))))) :
             self.spawn_rate_timer = 0
             self.enemies.append(self.new_enemy)
 
