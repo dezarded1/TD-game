@@ -12,6 +12,10 @@ from endgame.win import Win
 class Game:
     def __init__(self):
         pygame.init()
+
+        pygame.mixer.init()
+        pygame.mixer.music.set_volume(MUSIC_VOLUME)
+
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         pygame.display.set_caption("Tower Defense")
         self.clock = pygame.time.Clock()
@@ -48,8 +52,14 @@ class Game:
                         self.current_state = GameState.PAUSE
                     elif self.current_state == GameState.PAUSE:
                         self.current_state = GameState.PLAYING
+                        pygame.mixer.music.stop()
+                        pygame.mixer.music.load(MUSIC["playing"])
+                        pygame.mixer.music.play(-1)
                     else :
                         self.current_state= GameState.MENU
+                        pygame.mixer.music.stop()
+                        pygame.mixer.music.load(MUSIC["menu"])
+                        pygame.mixer.music.play(-1)
 
     def _handle_state_events(self, events):
         if self.current_state == GameState.MENU:

@@ -98,10 +98,12 @@ class Tower:
             tower_color = tuple(min(255, c + 100) for c in tower_color)
 
         pygame.draw.circle(screen, tower_color, (int(self.x), int(self.y)), self.size - 5)
+        
         if self.target and self.target.alive:
             end_x = self.x + math.cos(self.angle) * (self.size - 5)
             end_y = self.y + math.sin(self.angle) * (self.size - 5)
             pygame.draw.line(screen, WHITE, (self.x, self.y), (end_x, end_y), 4)
+
         range_surface = pygame.Surface((self.range * 2, self.range * 2), pygame.SRCALPHA)
         pygame.draw.circle(
             range_surface,

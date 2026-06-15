@@ -7,6 +7,15 @@ SCREEN_WIDTH=1280
 SCREEN_HEIGHT=960
 FPS=60
 
+#MUSIC
+MUSIC_VOLUME = 0.3
+MUSIC = {
+    "playing": "assets/music/Clockwork Citadel.mp3",
+    "menu": "assets/music/Menu Static.mp3",
+    "victory": "",
+    "defeat": ""
+}
+
 # Цвета
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)

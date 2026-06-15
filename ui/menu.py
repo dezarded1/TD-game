@@ -22,6 +22,10 @@ class Button:
 
         self._render_text()
 
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load(MUSIC["menu"])
+        pygame.mixer.music.play(-1)
+
     def _render_text(self):
         self.text_surface = self.font.render(self.text, True, self.text_color)
         self.text_rect = self.text_surface.get_rect(center=self.rect.center)
@@ -73,7 +77,11 @@ class MainMenu:
     def handle_events(self, events):
         for event in events:
             if self.start_button.handle_event(event):
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load(MUSIC["playing"])
+                pygame.mixer.music.play(-1)
                 return GameState.PLAYING
+                
 
         return None
 

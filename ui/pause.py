@@ -127,8 +127,12 @@ class Pause:
         for event in events:
             if self.retry_button.handle_event(event):
                 return GameState.PLAYING
+            
         for event in events:
             if self.menu_button.handle_event(event):
+                pygame.mixer.music.stop()
+                pygame.mixer.music.load(MUSIC["menu"])
+                pygame.mixer.music.play(-1)
                 return GameState.MENU
         return None
 
