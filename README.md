@@ -3,7 +3,11 @@
 
 ## Геймплей
 
-<video src="https://github.com/dezarded1/TD-game/raw/main/screenshots/gameplay.mp4" width="640" controls></video>
+
+
+https://github.com/user-attachments/assets/9e618d47-eb35-47b0-bc94-0841caf31cf7
+
+
 
 ## Технологии
 
@@ -46,7 +50,7 @@
 - Создание новых игровых механик
 - Улучшение дизайна
 
-##  Автор
+##  Авторы
 
 - **Возраст:** 16 лет
-- **GitHub:** [dezarded1](https://github.com/dezarded1)
+- **GitHub:** [dezarded1](https://github.com/dezarded1) and [Romariovass](https://github.com/Romariovass)
