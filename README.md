@@ -3,8 +3,7 @@
 
 ## Геймплей
 
-<!-- <video src="screenshots\gameplay.mp4" width="640" controls></video> -->
-https://github.com/dezarded1/TD-game/blob/main/screenshots/gameplay.mp4
+<video src="https://github.com/dezarded1/TD-game/raw/main/screenshots/gameplay.mp4" width="640" controls></video>
 
 ## Технологии
 
