@@ -3,7 +3,8 @@
 
 ## Геймплей
 
-<video src="screenshots\Last Stand gameplay.mp4" width="640" controls></video>
+<!-- <video src="screenshots\gameplay.mp4" width="640" controls></video> -->
+https://github.com/dezarded1/TD-game/blob/main/screenshots/gameplay.mp4
 
 ## Технологии
 
