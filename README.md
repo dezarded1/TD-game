@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/9e618d47-eb35-47b0-bc94-0841caf31cf7
 - Строк кода: 1000+
 
 ## Установка и запуск
-1.Клонировать репозиторий:git clone https://github.com/dezarded1/TD-game.git
+1.Клонировать репозиторий:git clone https://github.com/dezarded1/Last-Stand.git
 
 2.Установить зависимости: pip install -r requirements.txt
 
